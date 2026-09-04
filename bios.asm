@@ -131,7 +131,7 @@ read_disk:
     ret
 
 ; --- Strings ---
-msg_init db "Custom BIOS loaded.", 0x0d, 0x0a, 0
+msg_init db "STB loaded...", 0x0d, 0x0a, 0
 msg_err  db "Boot failed: No valid signature.", 0x0d, 0x0a, 0
 
 ; --- Pad up to Reset Vector ---
