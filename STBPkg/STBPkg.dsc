@@ -21,3 +21,8 @@
 
 [Components]
   STBPkg/Application/Main/Main.inf
+
+[FlashFreezes]
+# Maps your .fdf file to the platform build
+[Defines]
+  FLASH_DEFINITION              = STBPkg/STBPkg.fdf
