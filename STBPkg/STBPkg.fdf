@@ -1,0 +1,29 @@
+[Defines]
+  FLASH_SEX                       = 0x00010005
+  FLASH_PREFIX                    = STBPkg
+  FLASH_PACKAGE_NAME              = STBPkg
+  FLASH_FILE_GUID                 = 12345678-abcd-ef01-2345-6789abcdef01
+  FIRMWARE_VOLUME_REVISION        = 0.2
+  SET_PERMISSIONS                 = TRUE
+
+[FV.FvMain]
+  BlockSize          = 0x10000
+  NumBlocks          = 0x20             ; 2MB Flash size
+  FvAlignment        = 16
+  ERASE_POLARITY     = 1
+  MEMORY_MAPPED      = TRUE
+  STICKY_WRITE       = TRUE
+  LOCK_STATUS        = TRUE
+  UNLOCK_STATUS      = TRUE
+
+  # Include your application inside the firmware volume
+  INF STBPkg/Application/Main/Main.inf
+
+[FDF.STBFlashRom]
+  BaseAddress   = 0xFFF00000            ; Top of 32-bit address space (Reset vector location)
+  Size          = 0x00200000            ; 2MB
+  ErasePolarity = 1
+  BlockSize     = 0x10000
+  NumBlocks     = 32
+  Offset        = 0
+  Fv            = FvMain
