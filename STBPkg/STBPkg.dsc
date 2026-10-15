@@ -7,6 +7,7 @@
   SUPPORTED_ARCHITECTURES        = X64
   BUILD_TARGETS                  = DEBUG|RELEASE
   SKUID_IDENTIFIER               = DEFAULT
+  FLASH_DEFINITION               = STBPkg/STBPkg.fdf
 
 [LibraryClasses]
   UefiApplicationEntryPoint|MdePkg/Library/UefiApplicationEntryPoint/UefiApplicationEntryPoint.inf
@@ -21,8 +22,3 @@
 
 [Components]
   STBPkg/Application/Main/Main.inf
-
-[FlashFreezes]
-# Maps your .fdf file to the platform build
-[Defines]
-  FLASH_DEFINITION              = STBPkg/STBPkg.fdf
