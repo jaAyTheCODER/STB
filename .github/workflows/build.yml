@@ -18,20 +18,18 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y build-essential git uuid-dev iasl nasm python3
 
-      - name: Clone Tianocore EDK II and Submodules
+      - name: Clone Tianocore EDK II Workspace
         run: |
-          git clone https://github.com/tianocore/edk2.git edk2-src
-          cd edk2-src
-          git submodule update --init
+          git clone --depth 1 https://github.com/tianocore/edk2.git .
+          git submodule update --init --depth 1 MdePkg
 
-      - name: Move STB into EDK II Workspace
+      - name: Move STB into Workspace Root
         run: |
-          mkdir -p edk2-src/STBPkg
-          cp -r STBPkg/* edk2-src/STBPkg/
+          mkdir -p STBPkg
+          cp -r ../STBPkg/* STBPkg/
 
       - name: Build BaseTools and Compile Firmware
         run: |
-          cd edk2-src
           make -C BaseTools
           export WORKSPACE=$(pwd)
           export EDK_TOOLS_PATH=$WORKSPACE/BaseTools
@@ -42,4 +40,4 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: STB-Firmware-ROM
-          path: edk2-src/Build/STBPkg/DEBUG_GCC5/FV/*.fd
+          path: Build/STBPkg/DEBUG_GCC5/FV/*.fd
