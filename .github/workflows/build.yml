@@ -18,11 +18,11 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y build-essential git uuid-dev iasl nasm python3
 
-      - name: Clone Tianocore EDK II
+      - name: Clone Tianocore EDK II and Submodules
         run: |
-          git clone --depth 1 https://github.com/tianocore/edk2.git edk2-src
+          git clone https://github.com/tianocore/edk2.git edk2-src
           cd edk2-src
-          git submodule update --init --depth 1
+          git submodule update --init
 
       - name: Move STB into EDK II Workspace
         run: |
