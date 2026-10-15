@@ -10,7 +10,8 @@
   Main.c
 
 [Packages]
-  MdePkg/MdePkg.inf
+  MdePkg/MdePkg.dec
+  STBPkg/STBPkc.dec
 
 [LibraryClasses]
   UefiApplicationEntryPoint
