@@ -33,7 +33,9 @@ jobs:
         run: |
           cd edk2-src
           make -C BaseTools
-          . edksetup.sh
+          export WORKSPACE=$(pwd)
+          export EDK_TOOLS_PATH=$WORKSPACE/BaseTools
+          source edksetup.sh BaseTools
           build -p STBPkg/STBPkg.dsc -a X64 -t GCC5 -b DEBUG
 
       - name: Upload Firmware Artifact (.fd)
