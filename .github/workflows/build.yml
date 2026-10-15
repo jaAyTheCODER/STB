@@ -1,4 +1,4 @@
-name: Build STB
+name: Build STB UEFI Firmware
 
 on:
   workflow_dispatch:
